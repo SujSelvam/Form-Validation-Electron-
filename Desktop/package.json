@@ -1,0 +1,40 @@
+{
+  "name": "desktop-form-validation",
+  "version": "1.0.0",
+  "description": "A react form validation application packaged with Electron.",
+  "main": "main.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "react-scripts start",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"npm start\" \"wait-on http://localhost:3000 && electron .\"",
+    "electron-pack": "npm run build --prefix ../form-validation && electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "react-scripts build --prefix ../form-validation"
+  },
+  "author": "Suja",
+  "license": "ISC",
+  "dependencies": {
+    "react-scripts": "^5.0.0"
+  },
+  "devDependencies": {
+    "electron": "^33.0.2",
+    "concurrently": "^9.0.1",
+    "electron-builder": "^25.1.8",
+    "electron-is-dev": "^3.0.1",
+    "wait-on": "^8.0.1"
+  },
+  "build": {
+    "appId": "com.sujselvam.form-validation",
+    "productName": "FormValidation",
+    "files": [
+      {
+        "from": "form-validation/build/",
+        "to": "build/"
+      }
+    ],
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
